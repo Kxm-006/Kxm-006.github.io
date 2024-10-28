@@ -1,0 +1,9 @@
+<?php
+// Establish a database connection
+$database = new mysqli("localhost", "root", "", "edoc");
+
+// Check for any connection errors
+if ($database->connect_error) {
+    die("Connection failed: " . $database->connect_error);
+}
+?>

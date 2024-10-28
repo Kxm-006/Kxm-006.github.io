@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/animations.css">  
+    <link rel="stylesheet" href="css/main.css">  
+    <link rel="stylesheet" href="css/index.css">
+    <title>eDoc</title>
+    <style>
+        body {
+            background-color: #CAF0F8; /* Almost White */
+            color: #03045E; /* Dark Blue */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .full-height {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        table {
+            animation: transitionIn-Y-bottom 0.5s;
+            background-color: #90E0EF; /* Very Light Blue */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: none;
+        }
+        .edoc-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0077B6; /* Blue */
+        }
+        .edoc-logo-sub {
+            font-size: 16px;
+            color: #00B4D8; /* Light Blue */
+        }
+        .heading-text {
+            font-size: 20px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .sub-text2 {
+            font-size: 14px;
+            color: #03045E; /* Dark Blue */
+            margin: 10px 0;
+        }
+        .nav-item {
+            color: #0077B6; /* Blue */
+            text-decoration: none;
+            padding-right: 10px;
+        }
+        .non-style-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .login-btn {
+            background-color: #0077B6; /* Blue */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            padding: 10px 25px;
+            font-size: 16px;
+        }
+        .login-btn:hover {
+            background-color: #005f8f; /* Darken the blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="full-height">
+        <center>
+        <table border="0">
+            <tr>
+                <td width="80%">
+                    <span class="edoc-logo">HMS </span>
+                    <span class="edoc-logo-sub">| Hospital Management System</span>
+                </td>
+                <td width="10%">
+                    <a href="signup.html" class="non-style-link"><span class="nav-item">REGISTER</span></a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <p class="heading-text">Ease process, save time.</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <p class="sub-text2">Feeling under the weather today? No need to fret. With HMS, <br>
+                        you can easily connect with healthcare professionals and schedule appointments online.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <center>
+                    <a href="login.html">
+                        <input type="button" value="Make Appointment" class="login-btn">
+                    </a>
+                    </center>
+                </td>
+            </tr>
+        </table>
+        </center>
+    </div>
+</body>
+</html>
+
+

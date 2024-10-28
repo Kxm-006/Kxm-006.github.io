@@ -1,0 +1,67 @@
+<?php 
+    session_start();
+    
+    // Clear all session variables
+    $_SESSION = array();
+
+    // Destroy session cookie if it exists
+    if (isset($_COOKIE[session_name()])) {
+        setcookie(session_name(), '', time()-86400, '/');
+    }
+
+    // Destroy the session
+    session_destroy();
+
+    // Redirect to login page after displaying message
+    header('Refresh: 2; URL=login.php?action=logout'); // Redirect after 2 seconds
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging Out</title>
+    <style>
+        /* Color palette */
+        :root {
+            --dark-blue: #03045E;
+            --blue: #0077B6;
+            --light-blue: #00B4D8;
+            --lighter-blue: #90E0EF;
+            --lightest-blue: #CAF0F8;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--lightest-blue);
+            color: var(--dark-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .message-box {
+            background-color: var(--lighter-blue);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h1>You have been logged out.</h1>
+        <p>Redirecting you to the login page...</p>
+    </div>
+</body>
+</html>

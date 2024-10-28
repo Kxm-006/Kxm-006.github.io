@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/animations.css">  
+    <link rel="stylesheet" href="css/main.css">  
+    <link rel="stylesheet" href="css/login.css">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #caf0f8; /* Lightest shade */
+        }
+        .container {
+            animation: transitionIn-X 0.5s;
+            background-color: #90e0ef; /* Slightly darker shade */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: auto;
+        }
+        .header-text {
+            color: #03045e; /* Dark blue */
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .sub-text {
+            color: #0077b6; /* Medium blue */
+            font-size: 16px;
+        }
+        .form-label {
+            color: #03045e; /* Dark blue */
+            font-weight: bold;
+        }
+        .input-text {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #0077b6; /* Medium blue */
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .login-btn {
+            background-color: #00b4d8; /* Bright blue */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: #0077b6; /* Medium blue on hover */
+        }
+        .hover-link1 {
+            color: #0077b6; /* Medium blue */
+            text-decoration: none;
+        }
+        .hover-link1:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: rgb(255, 62, 62);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Centered container for login form -->
+<center>
+    <div class="container">
+        <p class="header-text">Welcome Back!</p>
+        <p class="sub-text">Login with your details to continue</p>
+        <form action="" method="POST">
+            <!-- Email field -->
+            <label for="useremail" class="form-label">Email:</label>
+            <input type="email" name="useremail" class="input-text" placeholder="Email Address" required>
+
+            <!-- Password field -->
+            <label for="userpassword" class="form-label">Password:</label>
+            <input type="password" name="userpassword" class="input-text" placeholder="Password" required>
+
+            <!-- Placeholder for error message -->
+            <div class="error-message">
+                <!-- Example Error: Wrong credentials: Invalid email or password -->
+            </div>
+
+            <!-- Login button -->
+            <input type="submit" value="Login" class="login-btn btn-primary btn">
+            <br><br>
+
+            <!-- Signup link -->
+            <label for="" class="sub-text">
+                Don't have an account? <a href="signup.html" class="hover-link1 non-style-link">Sign Up</a>
+            </label>
+        </form>
+    </div>
+</center>
+
+</body>
+</html>
+
+
