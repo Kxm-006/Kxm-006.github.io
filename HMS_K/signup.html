@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/animations.css">  
+    <link rel="stylesheet" href="css/main.css">  
+    <link rel="stylesheet" href="css/signup.css">
+        
+    <title>Sign Up</title>
+    <style>
+        body {
+            background-color: #caf0f8; /* Lightest shade */
+        }
+        .container {
+            animation: transitionIn-X 0.5s;
+            background-color: #90e0ef; /* Slightly darker shade */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .header-text {
+            color: #03045e; /* Dark blue */
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .sub-text {
+            color: #0077b6; /* Medium blue */
+            font-size: 16px;
+        }
+        .form-label {
+            color: #03045e; /* Dark blue */
+            font-weight: bold;
+        }
+        .input-text {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #0077b6; /* Medium blue */
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .login-btn {
+            background-color: #00b4d8; /* Bright blue */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: #0077b6; /* Medium blue on hover */
+        }
+        .hover-link1 {
+            color: #0077b6; /* Medium blue */
+            text-decoration: none;
+        }
+        .hover-link1:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<?php
+session_start();
+
+if ($_POST) {
+    // Store personal details in session variables
+    $_SESSION['personal']['fname'] = $_POST['fname'];
+    $_SESSION['personal']['lname'] = $_POST['lname'];
+    $_SESSION['personal']['address'] = $_POST['address'];
+    $_SESSION['personal']['nic'] = $_POST['nic'];
+    $_SESSION['personal']['dob'] = $_POST['dob'];
+
+    // Redirect to create_account.php to complete the signup
+    header('Location: create_account.php');
+    exit;
+}
+?>
+
+<center>
+    <div class="container">
+        <form action="" method="POST">
+            <table border="0" style="width: 70%;">
+                <tr>
+                    <td colspan="2">
+                        <p class="header-text">Create Your Account</p>
+                        <p class="sub-text">Please fill in your details below.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="fname" class="form-label">First Name:</label>
+                        <input type="text" name="fname" class="input-text" placeholder="First Name" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="lname" class="form-label">Last Name:</label>
+                        <input type="text" name="lname" class="input-text" placeholder="Last Name" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="address" class="form-label">Address:</label>
+                        <input type="text" name="address" class="input-text" placeholder="Your Address" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="nic" class="form-label">NIC:</label>
+                        <input type="text" name="nic" class="input-text" placeholder="National ID Number" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="dob" class="form-label">Date of Birth:</label>
+                        <input type="date" name="dob" class="input-text" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Next" class="login-btn btn-primary btn">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <br>
+                        <label for="" class="sub-text" style="font-weight: 280;">Already have an account&#63; </label>
+                        <a href="login.html" class="hover-link1 non-style-link">Login</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</center>
+</body>
+</html>
