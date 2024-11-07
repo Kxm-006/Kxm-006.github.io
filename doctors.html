@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/animations.css">  
+    <link rel="stylesheet" href="../css/main.css">  
+    <link rel="stylesheet" href="../css/admin.css">
+    <title>Doctors</title>
+    <style>
+        body {
+            background-color: #CAF0F8; /* Lightest color from the palette */
+            color: #03045E; /* Darkest color for text */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .menu {
+            width: 20%;
+            background-color: #0077B6; /* Dark blue for menu */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu-btn {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #00B4D8; /* Lighter blue for buttons */
+            border-radius: 5px;
+        }
+
+        .menu-btn:hover {
+            background-color: #90E0EF; /* Soft blue for hover */
+        }
+
+        .menu-btn.menu-active {
+            background-color: #03045E; /* Active state darker blue */
+        }
+
+        .logout-btn {
+            background-color: #00B4D8;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .header-search input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #90E0EF;
+        }
+
+        .header-searchbar {
+            width: 100%;
+        }
+
+        .btn-primary-soft {
+            background-color: #90E0EF;
+            color: #03045E;
+        }
+
+        .btn-primary {
+            background-color: #0077B6;
+            color: white;
+        }
+
+        .btn-primary-soft:hover, .btn-primary:hover {
+            background-color: #CAF0F8;
+            color: #03045E;
+        }
+
+        .table-headin {
+            background-color: #0077B6;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .scroll {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .sub-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .sub-table td, .sub-table th {
+            padding: 10px;
+            border: 1px solid #90E0EF;
+        }
+
+        .heading-main12 {
+            color: #03045E;
+        }
+
+        .profile-container {
+            width: 100%;
+        }
+
+        .profile-title {
+            font-size: 18px;
+            color: #03045E;
+            margin-bottom: 5px;
+        }
+
+        .profile-subtitle {
+            font-size: 14px;
+            color: #0077B6;
+        }
+
+        .btn-label img {
+            width: 25px;
+            margin-left: 20px;
+        }
+
+        .btn-icon-back {
+            background-color: #90E0EF;
+            border: none;
+            color: #03045E;
+            font-size: 16px;
+        }
+
+        .btn-icon-back:hover {
+            background-color: #CAF0F8;
+        }
+
+        .menu-icon-home, .menu-icon-doctor, .menu-icon-session, .menu-icon-appoinment, .menu-icon-settings {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .menu-text {
+            font-size: 16px;
+        }
+
+        .btn {
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary-soft {
+            background-color: #90E0EF;
+        }
+
+        .btn-primary {
+            background-color: #0077B6;
+        }
+
+        .btn-primary-soft:hover {
+            background-color: #CAF0F8;
+        }
+
+        .menu-row {
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .menu-row:hover {
+            background-color: #90E0EF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <table class="menu-container" border="0">
+                <tr>
+                    <td style="padding:10px" colspan="2">
+                        <table border="0" class="profile-container">
+                            <tr>
+                                <td width="30%" style="padding-left:20px">
+                                    <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
+                                </td>
+                                <td style="padding:0px;margin:0px;">
+                                    <p class="profile-title">John Doe</p>
+                                    <p class="profile-subtitle">johndoe@example.com</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <a href="logout.html"><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-home">
+                        <a href="index1.html" class="non-style-link-menu"><div><p class="menu-text">Home</p></a></div></a>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-doctor menu-active">
+                        <a href="doctors.html" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">All Doctors</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-session">
+                        <a href="schedule.html" class="non-style-link-menu"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-appoinment">
+                        <a href="appointment.html" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
+                    </td>
+                </tr>
+                <tr class="menu-row">
+                    <td class="menu-btn menu-icon-settings">
+                        <a href="settings.html" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="dash-body">
+            <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px;">
+                <tr>
+                    <td width="13%">
+                        <a href="doctors.html"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    </td>
+                    <td>
+                        <form action="" method="post" class="header-search">
+                            <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Doctor name or Email" list="doctors">&nbsp;&nbsp;
+                            <datalist id="doctors">
+                                <option value="Dr. Jane Smith">
+                                <option value="dr.janesmith@example.com">
+                                <option value="Dr. John Doe">
+                                <option value="dr.johndoe@example.com">
+                            </datalist>
+                            <input type="Submit" value="Search" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                        </form>
+                    </td>
+                    <td width="15%">
+                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">Today's Date</p>
+                        <p class="heading-sub12" style="padding: 0;margin: 0;">
+                            2024-11-07
+                        </p>
+                    </td>
+                    <td width="10%">
+                        <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding-top:10px;">
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">All Doctors (3)</p>
+                    </td>
+                </tr>
+                <tr>
+                   <td colspan="4">
+                       <center>
+                        <div class="abc scroll">
+                        <table width="93%" class="sub-table scrolldown" border="0">
+                        <thead>
+                        <tr>
+                            <th class="table-headin">Doctor Name</th>
+                            <th class="table-headin">Email</th>
+                            <th class="table-headin">Specialties</th>
+                            <th class="table-headin">Events</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Sample data -->
+                        <tr>
+                            <td>Dr. John Doe</td>
+                            <td>dr.johndoe@example.com</td>
+                            <td>Cardiology</td>
+                            <td><a href="event-details.html" class="btn btn-primary-soft">View Events</a></td>
+                        </tr>
+                        <tr>
+                            <td>Dr. Jane Smith</td>
+                            <td>dr.janesmith@example.com</td>
+                            <td>Neurology</td>
+                            <td><a href="event-details.html" class="btn btn-primary-soft">View Events</a></td>
+                        </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    </center>
+                   </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

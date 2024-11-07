@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/delete-appointment.css"> <!-- Optional custom CSS -->
+    <title>Delete Appointment</title>
+    <style>
+        body {
+            background-color: #caf0f8; /* Lightest shade from your palette */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #90e0ef; /* Slightly darker shade */
+            width: 60%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+        }
+
+        .header-text {
+            color: #03045e; /* Dark blue */
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sub-text {
+            color: #0077b6; /* Medium blue */
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            color: #03045e; /* Dark blue */
+            font-weight: bold;
+        }
+
+        .input-text {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #0077b6; /* Medium blue */
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .delete-btn {
+            background-color: #ff4d4d; /* Red for delete button */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            width: 100%;
+            cursor: pointer;
+            border: none;
+            font-size: 18px;
+        }
+
+        .delete-btn:hover {
+            background-color: #e60000; /* Darker red on hover */
+        }
+
+        .error-message {
+            color: rgb(255, 62, 62);
+            text-align: center;
+        }
+
+        .confirmation-message {
+            color: #00b4d8; /* Bright blue */
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .cancel-btn {
+            background-color: #0077b6; /* Medium blue for cancel button */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .cancel-btn:hover {
+            background-color: #005fa3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <center>
+        <div class="container">
+            <p class="header-text">Are You Sure You Want to Delete This Appointment?</p>
+            <p class="sub-text">This action cannot be undone. Your appointment will be permanently removed.</p>
+
+            <!-- PHP code to display error or success messages -->
+            <div class="error-message">
+                <?php
+                // Display error or success message
+                if(isset($_GET['action']) && $_GET['action'] == 'delete-failed') {
+                    echo '<p>There was an issue deleting your appointment. Please try again later.</p>';
+                }
+                ?>
+            </div>
+
+            <div class="confirmation-message">
+                <?php
+                // Success message for appointment deletion
+                if(isset($_GET['action']) && $_GET['action'] == 'delete-success') {
+                    echo '<p>Your appointment has been successfully deleted.</p>';
+                }
+                ?>
+            </div>
+
+            <!-- Form for confirmation -->
+            <form action="appointment_delete.html" method="POST">
+                <label for="confirm" class="form-label">To confirm, type "DELETE" below:</label>
+                <input type="text" name="confirm" class="input-text" placeholder="Type DELETE to confirm" required>
+
+                <!-- Submit Delete Button -->
+                <input type="submit" name="delete" value="Delete Appointment" class="delete-btn">
+
+                <!-- Cancel Button -->
+                <a href="appointment.html" class="non-style-link">
+                    <input type="button" value="Cancel" class="cancel-btn">
+                </a>
+            </form>
+        </div>
+    </center>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/booking.css"> <!-- Assuming a custom CSS for the booking page -->
+    <title>Appointment Booking</title>
+    <style>
+        body {
+            background-color: #caf0f8; /* Lightest shade */
+        }
+        .container {
+            animation: transitionIn-X 0.5s;
+            background-color: #90e0ef; /* Slightly darker shade */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            margin: auto;
+        }
+        .header-text {
+            color: #03045e; /* Dark blue */
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .sub-text {
+            color: #0077b6; /* Medium blue */
+            font-size: 16px;
+            text-align: center;
+        }
+        .form-label {
+            color: #03045e; /* Dark blue */
+            font-weight: bold;
+        }
+        .input-text {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #0077b6; /* Medium blue */
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .book-btn {
+            background-color: #00b4d8; /* Bright blue */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .book-btn:hover {
+            background-color: #0077b6; /* Medium blue on hover */
+        }
+        .hover-link1 {
+            color: #0077b6; /* Medium blue */
+            text-decoration: none;
+        }
+        .hover-link1:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: rgb(255, 62, 62);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <center>
+        <div class="container">
+            <p class="header-text">Book Your Appointment</p>
+            <p class="sub-text">Please fill out the details below to schedule your appointment.</p>
+
+            <form action="../booking_complete.html" aria-hidden="true"></i>" method="POST">
+                <!-- Appointment Number -->
+                <label for="apponum" class="form-label">Appointment Number:</label>
+                <input type="number" name="apponum" class="input-text" placeholder="Enter Appointment Number" required>
+
+                <!-- Schedule ID -->
+                <label for="scheduleid" class="form-label">Schedule ID:</label>
+                <input type="number" name="scheduleid" class="input-text" placeholder="Enter Schedule ID" required>
+
+                <!-- Appointment Date -->
+                <label for="date" class="form-label">Appointment Date:</label>
+                <input type="date" name="date" class="input-text" required>
+
+                <!-- Error message -->
+                <div class="error-message">
+                    <?php
+                        if(isset($_GET['action']) && $_GET['action'] == 'booking-added'){
+                            echo '<p>Your appointment has been successfully booked!</p>';
+                        }
+                    ?>
+                </div>
+
+                <!-- Submit Button -->
+                <input type="submit" name="booknow" value="Book Now" class="book-btn">
+            </form>
+        </div>
+    </center>
+
+</body>
+</html>
+
+
+

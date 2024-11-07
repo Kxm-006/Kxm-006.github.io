@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <style>
+        :root {
+            --color-primary: #03045e;
+            --color-secondary: #0077b6;
+            --color-tertiary: #00b4d8;
+            --color-light: #caf0f8;
+            --color-lightest: #90e0ef;
+        }
+        body {
+            background-color: var(--color-light);
+            color: var(--color-primary);
+            font-family: Arial, sans-serif;
+        }
+        .dashbord-tables {
+            animation: transitionIn-Y-over 0.5s;
+        }
+        .filter-container {
+            animation: transitionIn-X 0.5s;
+        }
+        .sub-table {
+            animation: transitionIn-Y-bottom 0.5s;
+        }
+        .container {
+            display: flex;
+        }
+        .menu {
+            width: 200px;
+            background-color: var(--color-primary);
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .menu-container {
+            width: 100%;
+            color: white;
+        }
+        .profile-container img {
+            width: 80%;
+            border-radius: 50%;
+        }
+        .profile-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .profile-subtitle {
+            font-size: 14px;
+            color: var(--color-secondary);
+        }
+        .menu-btn {
+            padding: 15px;
+            color: white;
+            background-color: var(--color-secondary);
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .menu-btn:hover {
+            background-color: var(--color-tertiary);
+        }
+        .menu-btn a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .menu-active {
+            background-color: var(--color-tertiary);
+        }
+        .dash-body {
+            margin-left: 220px;
+            padding: 20px;
+            width: 100%;
+        }
+        .login-btn {
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background-color: var(--color-tertiary);
+        }
+        .btn-icon-back {
+            background-color: var(--color-secondary);
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .dashboard-items {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--color-lightest);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+        .dashboard-items:hover {
+            background-color: var(--color-tertiary);
+        }
+        .dashboard-icons-setting {
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+        }
+        .btn-label {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+        }
+        .btn-label img {
+            width: 20px;
+            height: 20px;
+        }
+        .setting-tabs a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+    <title>Settings</title>
+</head>
+<body>
+    <?php
+        session_start();
+
+        if(isset($_SESSION["user"])){
+            if($_SESSION["user"] == "" || $_SESSION['usertype'] != 'p'){
+                header("location: ../login.php");
+            } else {
+                $useremail = $_SESSION["user"];
+            }
+        } else {
+            header("location: ../login.php");
+        }
+
+        include("../connection.php");
+        $sqlmain = "SELECT * FROM patient WHERE pemail=?";
+        $stmt = $database->prepare($sqlmain);
+        $stmt->bind_param("s", $useremail);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $userfetch = $result->fetch_assoc();
+        $userid = $userfetch["pid"];
+        $username = $userfetch["pname"];
+    ?>
+
+    <div class="container">
+        <!-- Sidebar Menu -->
+        <div class="menu">
+            <table class="menu-container" border="0">
+                <tr>
+                    <td colspan="2">
+                        <table border="0" class="profile-container">
+                            <tr>
+                                <td>
+                                    <img src="../img/user.png" alt="Profile Picture">
+                                </td>
+                                <td>
+                                    <p class="profile-title"><?php echo substr($username, 0, 13); ?>..</p>
+                                    <p class="profile-subtitle"><?php echo substr($useremail, 0, 22); ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <a href="logout.html"><button class="logout-btn login-btn">Log out</button></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="menu-btn menu-icon-home">
+                        <a href="index1.html"><p class="menu-text">Home</p></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="menu-btn menu-icon-doctor">
+                        <a href="doctors.html"><p class="menu-text">All Doctors</p></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="menu-btn menu-icon-session">
+                        <a href="schedule.html"><p class="menu-text">Scheduled Sessions</p></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="menu-btn menu-icon-appoinment">
+                        <a href="appointment.html"><p class="menu-text">My Bookings</p></a>
+                    </td>
+                </tr>
+                <tr class="menu-active">
+                    <td class="menu-btn menu-icon-settings">
+                        <a href="settings.html"><p class="menu-text">Settings</p></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Main Content -->
+        <div class="dash-body">
+            <table width="100%" style="margin: 0; padding: 0;">
+                <tr>
+                    <td width="13%">
+                        <a href="settings.html"><button class="login-btn btn-icon-back"><font class="tn-in-text">Back</font></button></a>
+                    </td>
+                    <td>
+                        <p style="font-size: 23px; font-weight: 600;">Settings</p>
+                    </td>
+                    <td width="15%" style="text-align: right;">
+                        <p>Today's Date</p>
+                        <p><?php 
+                            date_default_timezone_set('Asia/Kolkata');
+                            echo date('Y-m-d');
+                        ?></p>
+                    </td>
+                    <td width="10%">
+                        <button class="btn-label"><img src="../img/calendar.svg" width="100%"></button>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Settings Tabs -->
+            <table class="filter-container" style="border: none;" border="0">
+                <tr>
+                    <td style="width: 25%;">
+                        <a href="?action=edit&id=<?php echo $userid; ?>" class="non-style-link">
+                            <div class="dashboard-items setting-tabs">
+                                <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
+                                <div>
+                                    <div class="h1-dashboard">Account Settings</div>
+                                    <div class="h3-dashboard">Edit your Account Details & Change Password</div>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">
+                        <a href="?action=view&id=<?php echo $userid; ?>" class="non-style-link">
+                            <div class="dashboard-items setting-tabs">
+                                <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/view-iceblue.svg');"></div>
+                                <div>
+                                    <div class="h1-dashboard">View Account Details</div>
+                                    <div class="h3-dashboard">View Personal information About Your Account</div>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">
+                        <a href="?action=drop&id=<?php echo $userid.'&name='.$username; ?>" class="non-style-link">
+                            <div class="dashboard-items setting-tabs">
+                                <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/patients-hover.svg');"></div>
+                                <div>
+                                    <div class="h1-dashboard" style="color: #ff5050;">Delete Account</div>
+                                    <div class="h3-dashboard">Will delete your account permanently</div>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+

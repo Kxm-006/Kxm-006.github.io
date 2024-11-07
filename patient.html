@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients</title>
+    <style>
+        /* Color Palette */
+        :root {
+            --dark-blue: #03045e;
+            --medium-blue: #0077b6;
+            --light-blue: #00b4d8;
+            --lighter-blue: #90e0ef;
+            --very-light-blue: #caf0f8;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--very-light-blue);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .menu {
+            width: 200px;
+            background-color: var(--dark-blue);
+            padding: 20px;
+            color: white;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            background-color: var(--medium-blue);
+            padding: 5px;
+        }
+
+        .menu-btn {
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            background-color: var(--medium-blue);
+            border-radius: 5px;
+        }
+
+        .btn-primary-soft {
+            background-color: var(--light-blue);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary-soft:hover {
+            background-color: var(--medium-blue);
+        }
+
+        .table-headin {
+            background-color: var(--lighter-blue);
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .filter-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: var(--very-light-blue);
+            border-radius: 10px;
+        }
+
+        .sub-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .sub-table th, .sub-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .sub-table tr:nth-child(even) {
+            background-color: var(--very-light-blue);
+        }
+
+        .popup {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            margin: 0 auto;
+            animation: fadeIn 0.5s;
+        }
+
+        .close {
+            font-size: 30px;
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            text-decoration: none;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="menu">
+            <div class="menu-btn"><a href="index1.html">Dashboard</a></div>
+            <div class="menu-btn"><a href="appointment.html">My Appointments</a></div>
+            <div class="menu-btn"><a href="schedule.html">My Sessions</a></div>
+            <div class="menu-btn"><a href="patient.html">My Patients</a></div>
+            <div class="menu-btn"><a href="settings.html">Settings</a></div>
+        </div>
+
+        <div class="content">
+            <form action="" method="post">
+                <input type="search" name="search12" class="input-text" placeholder="Search Patient name or Email">
+                <input type="submit" value="Search" name="search" class="btn-primary-soft">
+            </form>
+
+            <p class="heading-main12">My Patients (5)</p>
+
+            <table class="sub-table">
+                <thead>
+                    <tr>
+                        <th class="table-headin">Name</th>
+                        <th class="table-headin">NIC</th>
+                        <th class="table-headin">Telephone</th>
+                        <th class="table-headin">Email</th>
+                        <th class="table-headin">DOB</th>
+                        <th class="table-headin">Events</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>123456789</td>
+                        <td>123-456-7890</td>
+                        <td>john@example.com</td>
+                        <td>1990-01-01</td>
+                        <td><button class="btn-primary-soft">View</button></td>
+                    </tr>
+                    <!-- More rows can be added dynamically here -->
+                </tbody>
+            </table>
+
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <center>
+                        <a class="close" href="patient.html">&times;</a>
+                        <div class="content">
+                            <table>
+                                <tr>
+                                    <td>Patient ID: P-1</td>
+                                </tr>
+                                <tr>
+                                    <td>Name: John Doe</td>
+                                </tr>
+                                <tr>
+                                    <td>Email: john@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td>NIC: 123456789</td>
+                                </tr>
+                                <tr>
+                                    <td>Telephone: 123-456-7890</td>
+                                </tr>
+                                <tr>
+                                    <td>Address: 123 Main St, City</td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth: 1990-01-01</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
