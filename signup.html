@@ -58,6 +58,10 @@
         .hover-link1:hover {
             text-decoration: underline;
         }
+        .error-message {
+            color: rgb(255, 62, 62);
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -72,15 +76,18 @@ if ($_POST) {
     $_SESSION['personal']['nic'] = $_POST['nic'];
     $_SESSION['personal']['dob'] = $_POST['dob'];
 
-    // Redirect to create_account.php to complete the signup
-    header('Location: create_account.php');
+    // Store password details in session
+    $_SESSION['personal']['password'] = $_POST['password'];
+
+    // Redirect to login page after successful sign-up
+    header('Location: login.html');
     exit;
 }
 ?>
 
 <center>
     <div class="container">
-        <form action="" method="POST">
+        <form action="" method="POST" onsubmit="return validatePasswords()">
             <table border="0" style="width: 70%;">
                 <tr>
                     <td colspan="2">
@@ -120,6 +127,24 @@ if ($_POST) {
                 </tr>
                 <tr>
                     <td colspan="2">
+                        <label for="password" class="form-label">Create Password:</label>
+                        <input type="password" name="password" class="input-text" placeholder="Create a Password" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="confirm_password" class="form-label">Confirm Password:</label>
+                        <input type="password" name="confirm_password" class="input-text" placeholder="Confirm Password" required>
+                    </td>
+                </tr>
+                <!-- Error message for password mismatch -->
+                <tr>
+                    <td colspan="2" class="error-message" id="password-error" style="display: none;">
+                        <p>Passwords do not match. Please try again.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
                         <input type="submit" value="Next" class="login-btn btn-primary btn">
                     </td>
                 </tr>
@@ -134,5 +159,18 @@ if ($_POST) {
         </form>
     </div>
 </center>
+
+<script>
+    // Client-side validation for matching passwords
+    function validatePasswords() {
+        var password = document.getElementsByName("password")[0].value;
+        var confirmPassword = document.getElementsByName("confirm_password")[0].value;
+        if (password !== confirmPassword) {
+            document.getElementById("password-error").style.display = "block";
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+</script>
 </body>
 </html>
