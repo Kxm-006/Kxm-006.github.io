@@ -17,17 +17,34 @@
         }
 
         body {
-            background-color: var(--color-primary);
-            color: white;
+            background-color: var(--color-very-light);
+            color: var(--color-primary);
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .menu {
             background-color: var(--color-secondary);
             padding: 20px;
+            width: 250px;
+            color: white;
         }
 
-        .menu-container {
-            width: 100%;
+        .profile-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .profile-container img {
+            border-radius: 50%;
+            width: 80px;
+            margin-bottom: 10px;
         }
 
         .menu-btn {
@@ -40,11 +57,34 @@
         }
 
         .menu-btn:hover {
-            background-color: var(--color-light);
+            background-color: var(--color-primary);
         }
 
         .menu-text {
             font-size: 16px;
+            font-weight: bold;
+        }
+
+        .logout-button {
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .header-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .title-text {
+            font-size: 24px;
+            color: var(--color-primary);
+            font-weight: bold;
         }
 
         .btn-primary-soft {
@@ -53,32 +93,18 @@
             padding: 10px;
             color: white;
             cursor: pointer;
+            border-radius: 4px;
         }
 
         .btn-primary-soft:hover {
-            background-color: var(--color-light);
+            background-color: var(--color-secondary);
         }
 
         .dashboard-items {
-            background-color: var(--color-very-light);
+            background-color: var(--color-light);
             padding: 20px;
             border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .dashboard-items .h1-search {
-            font-size: 18px;
-            color: var(--color-primary);
-        }
-
-        .dashboard-items .h3-search {
-            font-size: 14px;
-            color: var(--color-secondary);
-        }
-
-        .dashboard-items .h4-search {
-            font-size: 12px;
-            color: var(--color-secondary);
+            margin-top: 20px;
         }
 
         .scroll {
@@ -86,115 +112,93 @@
             overflow-y: auto;
         }
     </style>
-    <title>Sessions</title>
+    <title>Scheduled Sessions</title>
 </head>
 <body>
     <div class="container">
+        <!-- Sidebar Menu -->
         <div class="menu">
-            <table class="menu-container" border="0">
-                <tr>
-                    <td style="padding:10px" colspan="2">
-                        <table border="0" class="profile-container">
-                            <tr>
-                                <td width="30%" style="padding-left:20px">
-                                    <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
-                                </td>
-                                <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">User Name</p>
-                                    <p class="profile-subtitle">user@example.com</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <a href="logout.html"><input type="button" value="Log out" class="btn-primary-soft"></a>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn">
-                        <a href="index1.html" class="non-style-link-menu"><div><p class="menu-text">Home</p></a></div></a>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn">
-                        <a href="doctors.html" class="non-style-link-menu"><div><p class="menu-text">All Doctors</p></a></div>
-                    </td>
-                </tr>
-                <tr class="menu-row menu-active">
-                    <td class="menu-btn">
-                        <a href="schedule.html" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Scheduled Sessions</p></a></div>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn">
-                        <a href="appointment.html" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
-                    </td>
-                </tr>
-                <tr class="menu-row">
-                    <td class="menu-btn">
-                        <a href="settings.html" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
-                    </td>
-                </tr>
-            </table>
+            <div class="profile-container">
+                <img src="../img/user.png" alt="User Profile Picture">
+                <p class="profile-title">User Name</p>
+                <p class="profile-subtitle">user@example.com</p>
+                <a href="logout.html" class="logout-button">
+                    <button class="btn-primary-soft">Log out</button>
+                </a>
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-btn">
+                    <a href="index1.html" class="non-style-link-menu">
+                        <p class="menu-text">Home</p>
+                    </a>
+                </div>
+                <div class="menu-btn">
+                    <a href="doctors.html" class="non-style-link-menu">
+                        <p class="menu-text">All Doctors</p>
+                    </a>
+                </div>
+                <div class="menu-btn menu-active">
+                    <a href="schedule.html" class="non-style-link-menu">
+                        <p class="menu-text">Scheduled Sessions</p>
+                    </a>
+                </div>
+                <div class="menu-btn">
+                    <a href="appointment.html" class="non-style-link-menu">
+                        <p class="menu-text">My Bookings</p>
+                    </a>
+                </div>
+                <div class="menu-btn">
+                    <a href="settings.html" class="non-style-link-menu">
+                        <p class="menu-text">Settings</p>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <div class="dash-body">
-            <table border="0" width="100%" style="border-spacing: 0;margin:0;padding:0;margin-top:25px;">
-                <tr>
-                    <td width="13%">
-                        <a href="schedule.html"><button class="btn-primary-soft" style="width:125px">Back</button></a>
-                    </td>
-                    <td>
-                        <form action="" method="post" class="header-search">
-                            <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Doctor name or Email or Date (YYYY-MM-DD)">
-                            <input type="Submit" value="Search" class="btn-primary-soft" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
-                        </form>
-                    </td>
-                    <td width="15%">
-                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">Today's Date</p>
-                        <p class="heading-sub12" style="padding: 0;margin: 0;">2024-11-07</p>
-                    </td>
-                    <td width="10%">
-                        <button class="btn-label" style="display: flex;justify-content: center;align-items: center;">
-                            <img src="../img/calendar.svg" width="100%">
-                        </button>
-                    </td>
-                </tr>
+        <!-- Main Content Section -->
+        <div class="main-content">
+            <div class="header-section">
+                <div class="title-text">Sessions</div>
+                <div>
+                    <a href="schedule.html"><button class="btn-primary-soft">Back</button></a>
+                    <button class="btn-label">
+                        <img src="../img/calendar.svg" width="25px" style="vertical-align: middle;">
+                    </button>
+                </div>
+            </div>
 
-                <tr>
-                    <td colspan="4" style="padding-top:10px;width: 100%;">
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Sessions (5)</p>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="4">
-                        <center>
-                            <div class="abc scroll">
-                                <table width="100%" class="sub-table scrolldown" border="0" style="padding: 50px;border:none">
-                                    <tbody>
-                                        <tr>
-                                            <td style="width: 25%;">
-                                                <div class="dashboard-items search-items">
-                                                    <div style="width:100%">
-                                                        <div class="h1-search">Session Title</div><br>
-                                                        <div class="h3-search">Doctor Name</div>
-                                                        <div class="h4-search">2024-11-07<br>Starts: <b>@14:00</b> (24h)</div><br>
-                                                        <a href="booking.html"><button class="btn-primary-soft" style="width:100%">Book Now</button></a>
+            <div class="dash-body">
+                <table border="0" width="100%" style="margin-top: 25px;">
+                    <tr>
+                        <td colspan="4">
+                            <center>
+                                <div class="scroll">
+                                    <table width="100%" class="sub-table" border="0" style="padding: 20px;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="width: 25%;">
+                                                    <div class="dashboard-items search-items">
+                                                        <div>
+                                                            <div class="h1-search">Session Title</div><br>
+                                                            <div class="h3-search">Doctor Name</div>
+                                                            <div class="h4-search">2024-11-07<br>Starts: <b>@14:00</b> (24h)</div><br>
+                                                            <a href="booking.html">
+                                                                <button class="btn-primary-soft">Book Now</button>
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- Add more sessions here -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </center>
-                    </td> 
-                </tr>
-            </table>
+                                                </td>
+                                            </tr>
+                                            <!-- Additional sessions can be added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </center>
+                        </td> 
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </body>
