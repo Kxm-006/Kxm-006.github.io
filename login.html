@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="css/login.css">
     <title>Login</title>
     <style>
+        /* Apply the color palette */
         body {
             background-color: #caf0f8; /* Lightest shade */
         }
         .container {
             animation: transitionIn-X 0.5s;
-            background-color: #90e0ef; /* Slightly darker shade */
+            background-color: #90e0ef; /* Light blue */
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -67,36 +68,49 @@
 </head>
 <body>
 
-<!-- Centered container for login form -->
 <center>
     <div class="container">
         <p class="header-text">Welcome Back!</p>
         <p class="sub-text">Login with your details to continue</p>
-        <form action="" method="POST">
-            <!-- Email field -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
             <label for="useremail" class="form-label">Email:</label>
-            <input type="email" name="useremail" class="input-text" placeholder="Email Address" required>
+            <input type="email" id="useremail" name="useremail" class="input-text" placeholder="Email Address" required>
 
-            <!-- Password field -->
             <label for="userpassword" class="form-label">Password:</label>
-            <input type="password" name="userpassword" class="input-text" placeholder="Password" required>
+            <input type="password" id="userpassword" name="userpassword" class="input-text" placeholder="Password" required>
 
-            <!-- Placeholder for error message -->
-            <div class="error-message">
-                <!-- Example Error: Wrong credentials: Invalid email or password -->
+            <div class="error-message" id="errorMessage">
+                <!-- Error message placeholder -->
             </div>
 
-            <!-- Login button -->
             <input type="submit" value="Login" class="login-btn btn-primary btn">
             <br><br>
 
-            <!-- Signup link -->
-            <label for="" class="sub-text">
+            <label class="sub-text">
                 Don't have an account? <a href="signup.html" class="hover-link1 non-style-link">Sign Up</a>
             </label>
         </form>
     </div>
 </center>
+
+<script>
+    function handleLogin(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        // Capture email and password values
+        const email = document.getElementById('useremail').value;
+        const password = document.getElementById('userpassword').value;
+
+        // Dummy validation check
+        if (email === "test@example.com" && password === "password123") {
+            // Redirect to index page upon success
+            window.location.href = "index1.html";
+        } else {
+            // Show an error message
+            document.getElementById('errorMessage').innerText = "Invalid email or password";
+        }
+    }
+</script>
 
 </body>
 </html>
